@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Inventory>
+  <Item>
+    <Name>Potato</Name>
+    <EuroCost>5</EuroCost>
+    <StockCount>10</StockCount>
+  </Item>
+  <Item>
+    <Name>Tomato</Name>
+    <EuroCost>10</EuroCost>
+    <StockCount>23</StockCount>
+  </Item>
+  <Item>
+    <Name>Ferrari</Name>
+    <EuroCost>22</EuroCost>
+    <StockCount>2</StockCount>
+  </Item>
+</Inventory>

@@ -1,0 +1,3 @@
+﻿5, Potato, 4
+20, Tomato, 22
+100, Minimini, 5
