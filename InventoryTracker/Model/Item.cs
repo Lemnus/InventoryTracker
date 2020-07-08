@@ -12,5 +12,11 @@ namespace InventoryTracker.Model
         public string Name { get; set; }
         public int Cost { get; set; }
         public int StockCount { get; set; }
+        public Item(string name="Test", int cost=1, int stockCount=11)
+        {
+            Name = name;
+            Cost = cost;
+            StockCount = stockCount;
+        }
     }
 }

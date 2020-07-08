@@ -1,4 +1,6 @@
 using GalaSoft.MvvmLight;
+using InventoryTracker.Model;
+using System.Collections.Generic;
 
 namespace InventoryTracker.ViewModel
 {
@@ -20,6 +22,7 @@ namespace InventoryTracker.ViewModel
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public string Title { get; set; }
+        public List<Item> Data { get; set; }
         public MainViewModel()
         {
             if (IsInDesignMode)
@@ -30,6 +33,9 @@ namespace InventoryTracker.ViewModel
             {
                 Title = "Hello MVVM Light";
             }
+            Data = new List<Item>();
+            Data.Add(new Item());
+            Data.Add(new Item());
         }
     }
 }

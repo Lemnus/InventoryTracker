@@ -3,12 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:local="clr-namespace:InventoryTracker"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         >
+
     <Grid>
-        
+        <ListView x:Name="dataGrid"  ItemsSource="{Binding Data}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=Cost}"/>
+                    <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Path=StockCount}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
