@@ -19,16 +19,17 @@ namespace InventoryTracker.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
+        public string Title { get; set; }
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            if (IsInDesignMode)
+            {
+                Title = "Hello MVVM Light (Design Mode)";
+            }
+            else
+            {
+                Title = "Hello MVVM Light";
+            }
         }
     }
 }
