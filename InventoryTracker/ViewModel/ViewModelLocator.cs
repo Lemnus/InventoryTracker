@@ -15,6 +15,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using CommonServiceLocator;
+using System.ComponentModel;
 
 namespace InventoryTracker.ViewModel
 {
