@@ -3,6 +3,7 @@ using InventoryTracker.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace InventoryTracker.ViewModel
 {
@@ -23,16 +24,22 @@ namespace InventoryTracker.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public List<Item> Data { get; set; }
-        private ObservableCollection<Item> employees;
-        public MainViewModel()
-        {
-            Data = new List<Item>();
-            GetInput(Data);
-            Data.Add(new Item());
+        //public List<Item> _items { get; set; }
+        private ObservableCollection<Item> _items;
+        public List<Item> Items 
+        { get 
+            {
+                return _items.ToList();
+            } 
         }
 
-        private void GetInput(List<Item> data)
+        public MainViewModel()
+        {
+            _items = new ObservableCollection<Item>();
+            GetInput(_items);
+        }
+
+        private void GetInput(ObservableCollection<Item> data)
         {            
             string line;
             // Read the file and display it line by line.  

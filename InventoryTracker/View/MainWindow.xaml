@@ -11,7 +11,7 @@
         >
 
     <Grid>
-        <ListView x:Name="dataGrid"  ItemsSource="{Binding Data}" >
+        <ListView x:Name="dataGrid"  ItemsSource="{Binding Items}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
