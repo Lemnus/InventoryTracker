@@ -15,7 +15,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
-                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=Cost}"/>
+                    <GridViewColumn Header="{Binding Currency}" DisplayMemberBinding="{Binding Path=Cost}"/>
                     <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Path=StockCount}"/>
                 </GridView>
             </ListView.View>

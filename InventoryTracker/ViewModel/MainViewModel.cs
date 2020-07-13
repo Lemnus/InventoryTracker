@@ -26,6 +26,7 @@ namespace InventoryTracker.ViewModel
         /// </summary>
         //public List<Item> _items { get; set; }
         private ObservableCollection<Item> _items;
+        public string Currency { get; set; }
         public List<Item> Items 
         { get 
             {
@@ -37,6 +38,7 @@ namespace InventoryTracker.ViewModel
         {
             _items = new ObservableCollection<Item>();
             GetInput(_items);
+            Currency = "Cost (Euro)";
         }
 
         private void GetInput(ObservableCollection<Item> data)
