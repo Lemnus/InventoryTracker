@@ -44,6 +44,7 @@ namespace InventoryTracker.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AddItemViewModel>();
         }
 
         public MainViewModel Main
@@ -53,7 +54,13 @@ namespace InventoryTracker.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+        public AddItemViewModel AddItem
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddItemViewModel>();
+            }
+        }        
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

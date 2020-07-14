@@ -1,9 +1,11 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using InventoryTracker.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace InventoryTracker.ViewModel
 {
@@ -21,10 +23,6 @@ namespace InventoryTracker.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        //public List<Item> _items { get; set; }
         private ObservableCollection<Item> _items;
         public string Currency { get; set; }
         public List<Item> Items 
@@ -33,12 +31,19 @@ namespace InventoryTracker.ViewModel
                 return _items.ToList();
             } 
         }
-
+        public ICommand AddItemCommand { get; private set; }
         public MainViewModel()
         {
             _items = new ObservableCollection<Item>();
             GetInput(_items);
             Currency = "Cost (Euro)";
+            AddItemCommand = new RelayCommand(AddItemMethod);
+        }
+
+        private void AddItemMethod()
+        {
+            AddItem win2 = new AddItem();
+            win2.Show();
         }
 
         private void GetInput(ObservableCollection<Item> data)
