@@ -16,6 +16,8 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using CommonServiceLocator;
 using System.ComponentModel;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 
 namespace InventoryTracker.ViewModel
 {
@@ -60,7 +62,11 @@ namespace InventoryTracker.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<AddItemViewModel>();
             }
-        }        
+        }
+        //private void NotifyUserMethod(NotificationMessage message)
+        //{
+        //    Console.Beep();
+        //}
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

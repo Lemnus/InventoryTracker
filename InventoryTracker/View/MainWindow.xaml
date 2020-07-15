@@ -20,6 +20,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button DockPanel.Dock="Left" Content="Add New Item" Width="200" Height="25" Command="{Binding AddItemCommand}" />
+        <Button DockPanel.Dock="Left" Content="Add New Item" Width="200" Height="25" Command="{Binding OpenAddItemMenuCommand}" />
     </Grid>
 </Window>
