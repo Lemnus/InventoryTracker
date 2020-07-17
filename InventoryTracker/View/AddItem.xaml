@@ -20,6 +20,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="1" Content="Enter Name" Margin="5"/>
@@ -30,6 +31,9 @@
         <TextBox Grid.Row="6" Margin="5" Text="{Binding Item.StockCount}"/>
         <Button Grid.Row="7" Content="Save Item" Margin="5" 
                 Command="{Binding SaveItemCommand}"
+                CommandParameter="{Binding ElementName=AddItemView}"/>
+        <Button Grid.Row="8" Content="Cancel" Margin="5" 
+                Command="{Binding CancelCommand}"
                 CommandParameter="{Binding ElementName=AddItemView}"/>
     </Grid>
 </Window>
