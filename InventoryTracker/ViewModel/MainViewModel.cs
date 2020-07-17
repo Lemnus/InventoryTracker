@@ -27,8 +27,6 @@ namespace InventoryTracker.ViewModel
     public class MainViewModel : ViewModelBase, INotifyPropertyChanged
     {     
         private double exchangeRate = 1.1;
-        private bool priceWithDollars = false;
-        //private ObservableCollection<Item> _items;
         private ObservableCollection<ItemWithDollar> _itemsWithDollars;        
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -46,7 +44,6 @@ namespace InventoryTracker.ViewModel
         {
             Messenger.Default.Register<Tuple<Item, AddItem>>(this, SaveNewItemMethod);
             _itemsWithDollars = new ObservableCollection<ItemWithDollar>();
-           // _itemsWithDollars = new ObservableCollection<Item>();
             GetInput(_itemsWithDollars);
             Currency = "Cost (Euro)";
             Currency2 = "Cost (Dollar)";
