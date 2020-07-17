@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace InventoryTracker.ViewModel
 {
@@ -24,33 +25,48 @@ namespace InventoryTracker.ViewModel
     /// </para>
     /// </summary>
     public class MainViewModel : ViewModelBase, INotifyPropertyChanged
-    {       
+    {     
+        private double exchangeRate = 1.1;
+        private bool priceWithDollars = false;
+        //private ObservableCollection<Item> _items;
+        private ObservableCollection<ItemWithDollar> _itemsWithDollars;        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand OpenAddItemMenuCommand { get; private set; }
         public string Currency { get; set; }
-        private ObservableCollection<Item> _items;
-        public List<Item> Items 
+        public string Currency2 { get; set; }
+        public List<ItemWithDollar> Items
         { 
             get 
             {
-                return _items.ToList();
+                return _itemsWithDollars.ToList();
             }
-        }
-        public ICommand OpenAddItemMenuCommand { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
+        }        
         public MainViewModel()
         {
             Messenger.Default.Register<Tuple<Item, AddItem>>(this, SaveNewItemMethod);
-            _items = new ObservableCollection<Item>();
-            GetInput(_items);
+            _itemsWithDollars = new ObservableCollection<ItemWithDollar>();
+           // _itemsWithDollars = new ObservableCollection<Item>();
+            GetInput(_itemsWithDollars);
             Currency = "Cost (Euro)";
+            Currency2 = "Cost (Dollar)";
             OpenAddItemMenuCommand = new RelayCommand(OpenAddItemMenuMethod);
         }
         private void SaveNewItemMethod(Tuple<Item, AddItem> obj)
         {
             Item item = obj.Item1;
             AddItem view = obj.Item2;
-            if(item!=null)
+            if (item != null)
             {
-                _items.Add(item);
+                ItemWithDollar itemWithDollar =
+                new ItemWithDollar
+                {
+                    Cost = item.Cost,
+                    Name = item.Name,
+                    CostInDollar = item.Cost * exchangeRate,
+                    StockCount = item.StockCount
+                };    
+                _itemsWithDollars.Add(itemWithDollar);
                 OnNotifyPropertyChanged("Items");
             }
             view.Close();
@@ -64,7 +80,7 @@ namespace InventoryTracker.ViewModel
             AddItem win2 = new AddItem();
             win2.Show();
         }
-        private void GetInput(ObservableCollection<Item> data)
+        private void GetInput(ObservableCollection<ItemWithDollar> data)
         {            
             string line;
             // Read the file and display it line by line.  
@@ -73,11 +89,13 @@ namespace InventoryTracker.ViewModel
             while ((line = file.ReadLine()) != null)
             {
                 string[] items = line.Split(',');
+                //Name, Cost, Stock (, CostInDollars)
                 for (int i = 0; i < 3; i++)
                     items[i]= items[i].TrimStart();
-                data.Add(new Item(items[0],
-                                  int.Parse(items[1]),
-                                  int.Parse(items[2])));
+                data.Add(new ItemWithDollar(items[0],
+                                  int.Parse(items[1]),                                  
+                                  int.Parse(items[2]),
+                                  double.Parse(items[1]) * exchangeRate));
             }
             file.Close();            
         }

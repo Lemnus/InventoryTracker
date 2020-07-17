@@ -83,6 +83,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\ItemWithDollar.cs" />
     <Compile Include="ViewModel\AddItemViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

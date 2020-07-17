@@ -10,9 +10,9 @@ namespace InventoryTracker.Model
 {
     public class Item : ObservableObject
     {
-        private string _name;
-        private int _cost;
-        private int _stockCount;
+        protected string _name;
+        protected int _cost;
+        protected int _stockCount;
 
         public string Name 
         { 
